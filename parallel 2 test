@@ -1,0 +1,36 @@
+pipeline {
+    agent none 
+    stages {
+        stage('build') {
+            agent { label 'jslave' }
+            steps {
+                    echo "build"
+            }
+        }
+        stage('deploy') {
+            agent { label 'cslave' } 
+            steps {
+                sh '''
+                    echo "deploy"
+                    sleep 5
+                    '''
+            }
+        }
+        stage('test') {
+            parallel {
+                stage('test1') {
+                    agent { label 'master' } 
+                    steps {
+                        sh 'echo "test1"'
+                    }
+                }
+                stage('test2') {
+                    agent { label 'master' } 
+                    steps {
+                        sh 'echo "test2"'
+                    }
+                }
+            }   
+        }    
+    }
+}
