@@ -1,11 +1,12 @@
 pipeline {
     agent { label 'master'}
     stages {
-    parallel {
-        stage ('build') { 
-          steps {
-             sh''' 
-              echo "build stage"
+        stage ('ALL') 
+        parallel {
+            stage ('build') { 
+                steps {
+                 sh''' 
+                echo "build stage"
              '''
         }
    }
@@ -15,7 +16,7 @@ pipeline {
            echo "deploy stage"
            '''
      }
-     }
+    }
    }
  }
 }     
