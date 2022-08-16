@@ -1,5 +1,8 @@
 pipeline {
     agent { label 'master' }
+    parameters {
+        choice(choices: ['main', 'cslave'], description: 'choose the label', name: 'choice1')
+        }
     stages {
         stage('ALL') {
             parallel {
