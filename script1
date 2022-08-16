@@ -1,0 +1,21 @@
+pipeline {
+    agent { label 'master'}
+    stages {
+    parallel {
+        stage ('build') { 
+          steps {
+             sh''' 
+              echo "build stage"
+             '''
+        }
+   }
+       stage ('deploy') {
+        steps {
+           sh'''
+           echo "deploy stage"
+           '''
+     }
+     }
+   }
+ }
+}     
