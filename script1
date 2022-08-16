@@ -7,6 +7,7 @@ pipeline {
                     steps {
                          sh''' 
                             echo "build stage"
+                            sleep 5
                          '''
                  }
              }
@@ -14,6 +15,7 @@ pipeline {
                     steps {
                          sh'''
                           echo "deploy stage"
+                          sleep 5
                          '''
                   }
              }
